@@ -81,24 +81,22 @@ function saveEvent(request, response){
     contextData.errors.push('Please select a year.');
   }
   
-  if (request.body.month == 0) {
+  if (request.body.month < 0 || request.body.month > 11 ) {
     contextData.errors.push('Please select a month.');
   }
   
-  if (request.body.day == 0) {
+  if (request.body.day < 0 || request.body.day > 31) {
     contextData.errors.push('Please select a day.');
   }
   
-  if (request.body.hour == 0) {
+  if (request.body.hour < 0 || request.body.hour > 23) {
     contextData.errors.push('Please select an hour.');
   }
   
-  if (request.body.minute == 0) {
+  if (request.body.minute != 0 || request.body.minute != 30) {
     contextData.errors.push('Please select minute.');
   }
   
-
-
   if (contextData.errors.length === 0) {
     var newEvent = {
       title: request.body.title,
