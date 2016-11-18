@@ -73,27 +73,23 @@ function saveEvent(request, response){
     contextData.errors.push('Must be URL ending in .gif or .png.');
   }
   
-/* Since year,month,day,hour,and minute are dropdown menu options, 
-   validation is coded as checking for the case where user did not make
-   a selection.  */
-  
-  if (request.body.year == 0) {
+  if (validator.isInt(request.body.year) == false || request.body.year < 2015 || request.body.year > 2016) {
     contextData.errors.push('Please select a year.');
   }
   
-  if (request.body.month < 0 || request.body.month > 11 ) {
+  if (validator.isInt(request.body.month) == false || request.body.month < 0 || request.body.month > 11 ) {
     contextData.errors.push('Please select a month.');
   }
   
-  if (request.body.day < 0 || request.body.day > 31) {
+  if (validator.isInt(request.body.day) == false || request.body.day < 1 || request.body.day > 31) {
     contextData.errors.push('Please select a day.');
   }
   
-  if (request.body.hour < 0 || request.body.hour > 23) {
+  if (validator.isInt(request.body.hour) == false || request.body.hour < 0 || request.body.hour > 23) {
     contextData.errors.push('Please select an hour.');
   }
   
-  if (request.body.minute != 0 || request.body.minute != 30) {
+  if (request.body.minute != 0 && request.body.minute != 30) {
     contextData.errors.push('Please select minute.');
   }
   
@@ -106,7 +102,7 @@ function saveEvent(request, response){
       attending: []
     };
     events.all.push(newEvent);
-    response.redirect('/events');
+    response.redirect('/events/' + events.all.length);
   }else{
     response.render('create-event.html', contextData);
   }
@@ -126,7 +122,7 @@ function rsvp (request, response){
     response.status(404).send('No such event');
   }
 
-  if(validator.isEmail(request.body.email)){
+  if(request.body.email.match(/^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@yale.edu$/i)){
     ev.attending.push(request.body.email);
     response.redirect('/events/' + ev.id);
   }else{
