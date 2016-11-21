@@ -19,14 +19,21 @@
 <div class="event-detail" id="event-image">
     <img id="image" src="{{event.image}}" height="200">
 </div>
+<div class="event-detail-header">Date & time</div>
 <div class="event-detail">
-    <span id="date"><strong>Date & time:</strong> <time datetime="{{event.date}}">{{event.date|prettyDate}}.</time></span>
+    <span id="date"><time datetime="{{event.date}}">{{event.date|prettyDate}}.</time></span>
 </div>
+<div class="event-detail-header">Location</div>
 <div class="event-detail">
-    <span id="location"><strong>Location:</strong> {{event.location}}</span>
+    <span id="location">{{event.location}}</span>
 </div>
+<div class="event-detail-header">Attendees</div>
 <div class="event-detail"> 
-    <strong>Attendees: </strong>{{event.attending.length}} people are going. They are:
+    {% if event.attending.length==1 %}
+        One person is going. That sad, lonely person is:
+    {% else %}
+        {{event.attending.length}} awesome people are going. They are:
+    {% endif %}
     <ul id="attendees">
       {% for item in event.attending %}
       <li>{{ item }}</li>

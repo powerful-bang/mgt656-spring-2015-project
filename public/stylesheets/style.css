@@ -16,6 +16,34 @@ img {
     margin-right: auto;
 }
 
+.aboutphoto {
+  /*-webkit-transition: all 0.5s ease;*/
+  /*   -moz-transition: all 0.5s ease;*/
+  /*     -o-transition: all 0.5s ease;*/
+  /*    -ms-transition: all 0.5s ease;*/
+  /*        transition: all 0.5s ease;*/
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+ 
+.aboutphoto:hover {
+  /*-webkit-transform: rotate(-10deg);*/
+  /*   -moz-transform: rotate(-10deg);*/
+  /*     -o-transform: rotate(-10deg);*/
+  /*    -ms-transform: rotate(-10deg);*/
+  /*        transform: rotate(-10deg);*/
+    border-radius: 50%;
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
 #logo {
   border: none;
 }
@@ -61,18 +89,35 @@ span.header {
   float: left;
   margin-left: 10px;
   padding: 5px;
+  
 }
 
 .header-logo-home {
   margin-left: 8px;
   padding: 5px;
+  transition: 0.4s;
+}
+
+.header-logo-home:hover {
+    opacity: 0;
+    transform: scale(3) rotate(10deg);
+}
+
+.event-detail-header {
+  border-radius: 8px 8px 0px 0px;
+  padding: 8px;
+  margin-left: 10px;
+  width: 500px;
+  font-weight: bold;
+  color: white;
+  background-color: #609dd2;
 }
 
 .event-detail {
   border: 1px solid #ddd;
   background-color: #eee;
   padding: 10px;
-  margin: 10px 0px 10px;
+  margin: 0px 10px 10px 10px;
   width: 500px;
 }
 
@@ -84,4 +129,8 @@ span.header {
 
 #button {
   margin: 20px 0px 10px 0px;
+}
+
+#fragments {
+  padding: 10px 0px 20px 0px;
 }
