@@ -28,12 +28,13 @@
 <div class="event-detail"> 
     <strong>Attendees: </strong>{{event.attending.length}} people are going. They are:
     <ul id="attendees">
-        <li>{{event.attending}}</li>
+      {% for item in event.attending %}
+      <li>{{ item }}</li>
+      {% endfor %}
     </ul>
 </div>
 
 <div class="container">
-  
 	
 	<form id="rsvp" method="POST">
 	
@@ -48,7 +49,6 @@
     <label for="submit"></label>
     <input id="submit" type="submit" value="Submit" class="btn btn-primary">
     
-    
     </div>
     
   </fieldset>    
@@ -58,7 +58,7 @@
 </div>
  
 <div>
-    <a class="btn btn-primary" href="/events/new">Create a new event</a>
+    <a class="btn btn-primary" id="button" href="/events/new">Create a new event</a>
 </div>
 
 
